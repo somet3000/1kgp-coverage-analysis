@@ -1,7 +1,7 @@
 # read in plink output
 print('reading in snp data')
 snp.data <- read.table(
-    'data/temp/less_coverage/plink.raw',
+    'data/temp/low_coverage/plink.raw',
     header = TRUE,
     nrows = 500,
     colClasses = c('character', 'character', rep('integer', 101231))
@@ -26,4 +26,4 @@ rnaseq.data <- rnaseq.data[, 5:ncol(rnaseq.data)]
 rnaseq.samples <- colnames(rnaseq.data)
 snp.data <- snp.data[, colnames(snp.data) %in% rnaseq.samples]
 
-write.table(snp.data, quote=FALSE, 'data/out/less_coverage/matrix_eqtl_genotype_data.txt')
+write.table(snp.data, quote=FALSE, 'data/out/low_coverage/matrix_eqtl_genotype_data.txt')
