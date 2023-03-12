@@ -19,6 +19,7 @@ snp.df <- snp.df[, c('V1', 'V2', 'V4')]
 snp.df <- snp.df[, c('V2', 'V1', 'V4')]
 colnames(snp.df) <- c('snpid', 'chr', 'pos')
 print(head(snp.df))
+
 # read in genotype matrix
 genotype.matrix <- read.table('data/out/high_coverage/matrix_eqtl_genotype_data.txt', row.names = NULL)
 print(head(genotype.matrix))

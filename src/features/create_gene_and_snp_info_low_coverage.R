@@ -15,7 +15,7 @@ print('writing gene info file!')
 write.table(genes, 'data/out/low_coverage/gene_info.txt', sep = '\t', row.names = FALSE)
 
 snp.df <- read.table('data/temp/low_coverage/plink.bim', header = FALSE)
-snp.df$V2 <- paste(c(snp.df$V1, snp.df$V4, snp.df$V6, snp.df$V5), sep = ':')
+snp.df$V2 <- paste(snp.df$V1, snp.df$V4, snp.df$V6, snp.df$V5, sep=':')
 snp.df <- snp.df[, c('V1', 'V2', 'V4')]
 snp.df <- snp.df[, c('V2', 'V1', 'V4')]
 colnames(snp.df) <- c('snpid', 'chr', 'pos')
@@ -25,7 +25,7 @@ print(head(snp.df))
 genotype.matrix <- read.table('data/out/low_coverage/matrix_eqtl_genotype_data.txt', row.names = NULL)
 print(head(genotype.matrix))
 snp.names <- genotype.matrix$row.names
-snp.df$snpid <- paste0('X', gsub(':', '.', snp.df$snpid))
+# snp.df$snpid <- paste0('X', gsub(':', '.', snp.df$snpid))
 print(head(snp.df))
 print(head(snp.names))
 snp.df <- snp.df[snp.df$snpid %in% snp.names, ]
