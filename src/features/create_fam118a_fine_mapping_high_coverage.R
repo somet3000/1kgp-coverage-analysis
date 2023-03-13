@@ -17,7 +17,7 @@ gene.info <- read.table('data/out/high_coverage/gene_info.txt', header=TRUE)
 fam118a.coord <- gene.info[gene.info$geneid == fam118a.id, 'left']
 
 # get all candidate snps
-candidate.snps <- snp.info[abs(snp.info$pos - fam118.coord) < 500000, ]
+candidate.snps <- snp.info[abs(snp.info$pos - fam118a.coord) < 500000, ]
 
 # read in genotype matrix
 genotype.data <- read.table('data/out/high_coverage/matrix_eqtl_genotype_data.txt')
