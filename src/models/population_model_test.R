@@ -4,7 +4,7 @@ useModel = modelLINEAR
 SNP_file_name = 'data/out/matrix_eqtl_genotype_data_test.txt'
 expression_file_name = 'data/out/matrix_eqtl_phenotype_test.txt'
 covariates_file_name = character()
-output_file_name = tempfile()
+output_file_name = 'test_output'
 
 pvOutputThreshold = 1e-2
 errorCovariance = numeric()
