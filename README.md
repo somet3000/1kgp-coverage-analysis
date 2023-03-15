@@ -1,2 +1,4 @@
-# t2t-1kgp-analysis
-Analysis of the 1000 Genomes Project using both the hg38 and T2T Genome Assemblies
+# 1KGP Coverage Analysis
+Expression quantitative trait loci (eQTL) and fine-mapping analysis of a cohort from the 1000 Genomes Project using both lower coverage and higher coverage (30x) data.
+
+
