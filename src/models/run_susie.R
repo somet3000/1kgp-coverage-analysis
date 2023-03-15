@@ -12,7 +12,7 @@ susie_plot(z.scores, y = "z")
 # run fine-mapping with susieR
 genotype <- as(as.matrix(genotype), 'sparseMatrix')
 fitted <- susie(genotype, expression[,1], L = 10, verbose = TRUE)
-
+print(fitted$sets)
 # plot fine-mapped results
 susie_plot(fitted, y="PIP")
 
@@ -28,6 +28,6 @@ susie_plot(z.scores, y = "z")
 # run fine-mapping with susieR
 genotype <- as(as.matrix(genotype), 'sparseMatrix')
 fitted <- susie(genotype, expression[,1], L = 10, verbose = TRUE)
-
+print(fitted$sets)
 # plot fine-mapped results
 susie_plot(fitted, y="PIP")
