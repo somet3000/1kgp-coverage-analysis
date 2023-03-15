@@ -15,17 +15,36 @@ def main(targets=['test']):
         os.system('bash src/data/download_liftover.sh')
 
         print('running plink preprocessing!')
-        os.system('bash src/features/run_plink.sh')
-        
+        os.system('bash src/data/run_plink_high_coverage.sh')
+        os.system('bash src/data/run_plink_low_coverage.sh')
+
         print('making eqtl matrices!')
-        os.system('Rscript src/features/create_genotype_matrix.R')
-        os.system('Rscript src/features/create_expression_matrix.R')
-        os.system('Rscript src/features/create_gene_and_snp_info.R')
+        os.system('Rscript src/features/create_genotype_matrix_high_coverage.R')
+        os.system('Rscript src/features/create_genotype_matrix_low_coverage.R')
+
+        os.system('Rscript src/features/create_expression_matrix_high_coverage.R')
+        os.system('Rscript src/features/create_expression_matrix_low_coverage.R')
+
+        os.system('Rscript src/features/create_gene_and_snp_info_high_coverage.R')
+        os.system('Rscript src/features/create_gene_and_snp_info_low_coverage.R')
+
+        print('running liftover')
+        os.system('Rscript src/features/convert_gene_info_to_bed.R')
+        os.system('bash src/features/liftover_gene_info.sh')
+        os.system('Rscript src/features/convert_gene_info_to_txt.R')
         
         print('running analysis using matrix eQTL!')
-        os.system('Rscript src/models/population_model.R')
+        os.system('Rscript src/models/population_model_high_coverage.R')
+        os.system('Rscript src/models/population_model_low_coverage.R')
+
+        print('preparing fine-mapping data')
+        os.system('Rscript src/features/create_fam118a_fine_mapping_high_coverage.R')
+        os.system('Rscript src/features/create_fam118a_fine_mapping_low_coverage.R')
+
+        print('running fine-mapping')
+        os.system('Rscript src/models/run_susie.R')
         
-        print('output pdf available in home code directory!')
+        print('output pdfs available in home code directory!')
         
     if 'test' in targets:
         
